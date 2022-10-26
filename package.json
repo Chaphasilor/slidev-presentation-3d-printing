@@ -1,0 +1,20 @@
+{
+  "name": "3d-printing",
+  "private": true,
+  "scripts": {
+    "build": "slidev build",
+    "dev": "slidev",
+    "export": "slidev export"
+  },
+  "dependencies": {
+    "@slidev/cli": "^0.36.8",
+    "@slidev/theme-default": "*",
+    "@slidev/theme-seriph": "*",
+    "bezier-easing": "^2.1.0",
+    "three": "^0.134.0",
+    "troisjs": "^0.3.4"
+  },
+  "devDependencies": {
+    "@iconify-json/tabler": "^1.1.42"
+  }
+}

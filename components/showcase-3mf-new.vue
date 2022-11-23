@@ -91,6 +91,7 @@ function generateMaterial(material) {
 }
 
 let onReady = ref(null);
+let currentRotation = ref(0);
 
 onMounted(async () => {
 
@@ -119,6 +120,16 @@ onMounted(async () => {
             })
         }
     })
+    renderer.onInit(() => {
+      console.log(`onInit`)
+      // modelGear.value = model;
+      // scene.add(modelGear.value);
+    });
+    renderer.onResize(() => {
+      console.log(`onResize`)
+      // modelGear.value = model;
+      // scene.add(modelGear.value);
+    });
     // scene.add(modelGear.value)
     renderer.onBeforeRender(() => {
       // cameraPosition.phi = cameraPosition.phi < 360 ? cameraPosition.phi + 1 : 0;
@@ -136,7 +147,11 @@ onMounted(async () => {
       // gearRotation.z = gearRotation.z;
   
       // console.log(`model.rotateX:`, model.rotateX)
-      model.rotateZ(-0.005 * props.rotationSpeed);
+      if (model.rotation.z == 0) {
+        model.rotation.z = currentRotation.value;
+      }
+      model.rotation.z += -0.005 * props.rotationSpeed;
+      currentRotation.value = model.rotation.z;
       
     });
     // setInterval(() => {
@@ -158,25 +173,25 @@ let pixelRatio = ref(window.devicePixelRatio ? window.devicePixelRatio * 1.5 : 1
 
 <template>
   <div class="p-0">
-    <Renderer ref="rendererRef" :width="props.width.toString()" :height="props.height.toString()" :alpha="true" :antialias="true" :pixel-ratio="pixelRatio">
-      <Camera :position="{ z: 50 }" :look-at="{x: 0, y: 0, z: 0}" :fov="50" />
+     <Renderer ref="rendererRef" :width="props.width.toString()" :height="props.height.toString()" :alpha="true" :antialias="true" :pixel-ratio="pixelRatio">
+      <Camera :position="{ z: 50 }" :look-at="{x: 0, y: 0, z: 0}" :fov="30" />
       <Scene ref="sceneRef">
         <AmbientLight :color="`#ffffff`" :intensity="props.brightness" />
         <PointLight :position="{ x: 100, y: 100, z: 100 }" :intensity="1.5" :cast-shadow="true" />
         
         <ThreemfModel
-          ref="modelGear"
-          :src="props.model"
-          :scale="{ x: props.scale, y: props.scale, z: props.scale }"
-          :position="{ x: props.position[0], y: props.position[1], z: props.position[2] }"
-          :rotation="{ x: props.rotation[0], y: props.rotation[1], z: props.rotation[2] }"
-          @load="onReady"
-          />
-            <!-- @load="onReady"
-            @progress="onProgress"
-            @error="onError" -->
-
+        ref="modelGear"
+        :src="props.model"
+        :scale="{ x: props.scale, y: props.scale, z: props.scale }"
+        :position="{ x: props.position[0], y: props.position[1], z: props.position[2] }"
+        :rotation="{ x: props.rotation[0], y: props.rotation[1], z: props.rotation[2] }"
+        @load="onReady"
+        />
+        <!-- @load="onReady"
+          @progress="onProgress"
+          @error="onError" -->
+          
       </Scene>
-  </Renderer>
+    </Renderer>
   </div>
 </template>

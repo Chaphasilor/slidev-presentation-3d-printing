@@ -106,29 +106,33 @@ clicks: 3
 </v-clicks>
 
 <!-- <showcase-3mf class="w-full h-96 opacity-0 transition-all duration-500" :class="{'opacity-100': $slidev.nav.clicks > 0}"/> -->
-<showcase-3mf-new 
+<!-- TODO add delay for showing objects instead of clicks? -->
+<showcase-3mf-new
+  v-if="$slidev.nav.clicks > 1"
   :model="`/3d models/Gear.3mf`"
   :color="`#ee8833`"
-  :position="[7, 7, 0]"
+  :position="[3, 4, 0]"
   :rotation="[-Math.PI/8, Math.PI/8, Math.PI/4]"
-  :scale="0.25"
+  :scale="0.15"
   :width="800" 
   :height="500"
-  class="absolute top-0 opacity-0 right-0 m-6 transition-all duration-500"
-  :class="{'opacity-100': $slidev.nav.clicks > 1}"
+  class="absolute top-0 opacity-100 right-0 m-6 transition-all duration-0 ease-in-out"
 />
-<showcase-3mf-new 
+  <!-- :class="{'opacity-100': $slidev.nav.clicks > 1}" -->
+  <!-- TODO add delay for showing objects instead of clicks? -->
+<showcase-3mf-new
+  v-if="$slidev.nav.clicks > 2"
   :model="`/3d models/cable-relief.3mf`"
   :color="`#ff5858`"
-  :position="[30, 10, 0]"
-  :rotation="[Math.PI/(-3), 0, Math.PI/2]"
+  :position="[17, 7, 0]"
+  :rotation="[Math.PI/(-4.5), -Math.PI/32, Math.PI/2]"
   :rotationSpeed="0.25"
-  :scale="0.25*0.5" 
+  :scale="0.05" 
   :width="800" 
   :height="500"
-  class="absolute top-0 opacity-0 right-0 m-6 transition-all duration-500"
-  :class="{'opacity-100': $slidev.nav.clicks > 2}"
+  class="absolute top-0 opacity-100 right-0 m-6 transition-all duration-0 ease-in-out"
 />
+  <!-- :class="{'opacity-100': $slidev.nav.clicks > 2}" -->
 
 ---
 

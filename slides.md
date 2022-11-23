@@ -1,25 +1,22 @@
 ---
-# try also 'default' to start simple
-theme: default
+theme: ./theme
 background: https://source.unsplash.com/collection/94734566/1920x1080
-# apply any windi css classes to the current slide
-# https://sli.dev/custom/highlighters.html
-# show line numbers in code blocks
 lineNumbers: false
-# some information about the slides, markdown enabled
 info: |
   ## Slidev Starter Template
   Presentation slides for developers.
 
   Learn more at [Sli.dev](https://sli.dev)
-# persist drawings in exports and build
 drawings:
   persist: false
+title: 3D-Printing @ EEL
 ---
 
-# Welcome to Slidev
+# 3D-Printing @ EEL
 
-Presentation slides for developers
+<!--
+picture with Ultimaker and Benchies?
+-->
 
 ---
 
@@ -29,39 +26,82 @@ Presentation slides for developers
 
 # What is 3D Printing?
 
-<tabler-heart/>
+- A type of *additive manufacturing*
+  - Parts are created layer-by-layer
+- Can be more efficient and versatile than subtractive manufacturing (e.g. machining)
+  - But usually at the cost of structural strength
+- Due to the nature of the process, it is often less reliable than other manufacturing techniques
 
 <!--
 Here is another comment.
 -->
 
 ---
+layout: image-bottom
+image: /3d-print_workflow.webp
+attribution: https://www.3dmakerengineering.com/blogs/3d-printing/how-3d-printing-works
+---
 
 # How does it work?
 
----
-layout: image-right
-image: https://source.unsplash.com/collection/94734566/1920x1080
+- Split the part into many layers of equal thickness
+- Use filament or powder as the material source
+- Melt the material at the correct position and let it cool off
+  - Next layer can be placed on top as soon as the previous layer has solidified enough
+
 ---
 
 # What do we need?
+
+<ul class="mt-12 flex -mx-10 flex-row justify-around items-end">
+
+<li v-click="1" class="w-full block">
+  <!-- <img class="" src="https://source.unsplash.com/collection/94734566/800x800" /> -->
+  <showcase-3mf-new 
+    class=""
+    :model="`/3d models/3DBenchy.3mf`"
+    :color="`#ee8833`"
+    :brightness="0.5"
+    :position="[0, -10, 0]"
+    :rotation="[-Math.PI/2 + Math.PI/8, 0, 0]"
+    :scale="0.5"
+    :width="265" 
+    :height="265"
+  />
+  <span class="w-full inline-block text-center"><tabler-3d-cube-sphere/> 3D Object</span>
+</li>
+<li v-click="2" class="w-full block">
+  <img class="mb-10 rounded-md" src="/cura_benchy.png" />
+  <span class="w-full inline-block text-center"><tabler-slice/> Slicing Software</span>
+</li>
+<li v-click="3" class="w-full block overflow-hidden">
+  <img class="aspect-square" src="/Ultimaker-S5-desktop-3D-printer-hero.webp" />
+  <span class="w-full inline-block text-center"><tabler-printer/> 3D Printer</span>
+</li>
+
+</ul>
+
+<!-- <v-clicks>
 
 - 3D Object
 - Slicing Software
 - 3D Printer
 
+</v-clicks> -->
+
+<!-- Animation where the three sections slide in from the right and squish together -->
+---
+clicks: 3
 ---
 
 # Getting 3D Objects
 
-- Use pre-existing ones
-  - <printables.com>
-  - <thingiverse.com>
-- Create a custom one
-
 <v-clicks>
 
-- like this
+- Use pre-existing ones
+  - <https://printables.com>
+  - <https://thingiverse.com>
+- Create custom ones
 
 </v-clicks>
 
@@ -69,25 +109,25 @@ image: https://source.unsplash.com/collection/94734566/1920x1080
 <showcase-3mf-new 
   :model="`/3d models/Gear.3mf`"
   :color="`#ee8833`"
-  :position="[0, 0, 0]"
+  :position="[7, 7, 0]"
   :rotation="[-Math.PI/8, Math.PI/8, Math.PI/4]"
-  :scale="0.75"
+  :scale="0.25"
   :width="800" 
   :height="500"
   class="absolute top-0 opacity-0 right-0 m-6 transition-all duration-500"
-  :class="{'opacity-100': $slidev.nav.clicks > 0}"
+  :class="{'opacity-100': $slidev.nav.clicks > 1}"
 />
 <showcase-3mf-new 
-  :model="`/3d models/Hair Dryer Addon v17.3mf`"
+  :model="`/3d models/cable-relief.3mf`"
   :color="`#ff5858`"
-  :brightness="25"
-  :position="[25, 2, 0]"
-  :rotation="[Math.PI/(-2 - 0.5), Math.PI/16, 0]"
-  :scale="0.2" 
+  :position="[30, 10, 0]"
+  :rotation="[Math.PI/(-3), 0, Math.PI/2]"
+  :rotationSpeed="0.25"
+  :scale="0.25*0.5" 
   :width="800" 
   :height="500"
   class="absolute top-0 opacity-0 right-0 m-6 transition-all duration-500"
-  :class="{'opacity-100': $slidev.nav.clicks > 0}"
+  :class="{'opacity-100': $slidev.nav.clicks > 2}"
 />
 
 ---
@@ -177,6 +217,8 @@ function updateUser(id: number, update: User) {
 
 # Use Cases
 
+- /r/cookingwith3dprinters
+
 ---
 
 ## Examples
@@ -185,6 +227,7 @@ function updateUser(id: number, update: User) {
 
 # Common Problems & Solutions
 
+- printing multiple things at once (temperature)
 
 ---
 src: ./pages/multiple-entries.md

@@ -3,8 +3,6 @@ import { ref, onMounted, reactive, render } from 'vue';
 import { Box, Camera, LambertMaterial, PointLight, AmbientLight, Renderer, Scene, Group, ThreemfModel } from 'troisjs';
 import * as THREE from 'three';
 
-import { ThreeMFLoader } from 'three/examples/jsm/loaders/3MFLoader.js';
-
 const props = defineProps({
   model: {
     type: String,
@@ -43,6 +41,11 @@ const props = defineProps({
     default: () => '#ffffff',
   },
   opacity: {
+    type: Number,
+    required: false,
+    default: () => 1,
+  },
+  rotationSpeed: {
     type: Number,
     required: false,
     default: () => 1,
@@ -133,7 +136,7 @@ onMounted(async () => {
       // gearRotation.z = gearRotation.z;
   
       // console.log(`model.rotateX:`, model.rotateX)
-      model.rotateZ(0.005)
+      model.rotateZ(-0.005 * props.rotationSpeed);
       
     });
     // setInterval(() => {
@@ -148,12 +151,14 @@ onMounted(async () => {
     
 })
 
+let pixelRatio = ref(window.devicePixelRatio ? window.devicePixelRatio * 1.5 : 1);
+
 </script>
 
 
 <template>
   <div class="p-0">
-    <Renderer ref="rendererRef" :width="props.width.toString()" :height="props.height.toString()" :alpha="true">
+    <Renderer ref="rendererRef" :width="props.width.toString()" :height="props.height.toString()" :alpha="true" :antialias="true" :pixel-ratio="pixelRatio">
       <Camera :position="{ z: 50 }" :look-at="{x: 0, y: 0, z: 0}" :fov="50" />
       <Scene ref="sceneRef">
         <AmbientLight :color="`#ffffff`" :intensity="props.brightness" />

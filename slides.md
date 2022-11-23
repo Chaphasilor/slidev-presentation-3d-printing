@@ -17,10 +17,17 @@ title: 3D-Printing @ EEL
 <!--
 picture with Ultimaker and Benchies?
 -->
-
 ---
 
+# Overview
+
 <toc/>
+
+<style>
+* {
+    @apply text-xs;
+}
+</style>
 
 ---
 
@@ -44,10 +51,32 @@ attribution: https://www.3dmakerengineering.com/blogs/3d-printing/how-3d-printin
 
 # How does it work?
 
+- Take a 3D object
 - Split the part into many layers of equal thickness
+- "Build" the print layer by layer
+  - Details on next slide!
+
+---
+
+# How does it work? - cont.
+
+## FFF Printing
+
 - Use filament or powder as the material source
 - Melt the material at the correct position and let it cool off
   - Next layer can be placed on top as soon as the previous layer has solidified enough
+- todo image
+
+---
+
+# How does it work? - cont.
+
+## SLA Printing
+
+- Resin
+- Screen with UV backlight
+- Harden resin layer by layer
+- todo image
 
 ---
 
@@ -62,11 +91,11 @@ attribution: https://www.3dmakerengineering.com/blogs/3d-printing/how-3d-printin
     :model="`/3d models/3DBenchy.3mf`"
     :color="`#ee8833`"
     :brightness="0.5"
-    :position="[0, -10, 0]"
+    :position="[0, -7, 0]"
     :rotation="[-Math.PI/2 + Math.PI/8, 0, 0]"
-    :scale="0.5"
-    :width="265" 
-    :height="265"
+    :scale="0.3"
+    :width="128" 
+    :height="128"
   />
   <span class="w-full inline-block text-center"><tabler-3d-cube-sphere/> 3D Object</span>
 </li>
@@ -138,6 +167,13 @@ clicks: 3
 
 # Computer-Aided Design (CAD)
 
+- Tools for constructing 3D objects
+- Either done visually or programmatically
+- Works by specifying geometric shapes with certain sizes and positions
+  - Shapes are combined into a single object
+  - Modifications (rounding, cuts, etc.) can be added at the end
+- Finished object is rendered and exported
+- Alternative: 3D scanning existing objects 
 
 ---
 
@@ -203,17 +239,54 @@ function updateUser(id: number, update: User) {
 
 # Printing Workflow
 
+1. Prepare the 3D Object
+2. Slice the object
+3. Print it!
+
 ---
+
+# Printing Workflow - cont.
 
 ## Preparing the 3D Object
 
-<!-- Live OpenSCAD demo? -->
+```js {all|4|3-4|2-4|all}
+// a basic cube
+transform([0, 0, 3])
+  rotate([90, 0, 0])
+   cube([5, 5, 5]);
+```
+
+<v-after>
+
+```openscad {monaco}
+// a basic cube
+transform([0, 0, 3])
+  rotate([90, 0, 0])
+   cube([5, 5, 5]);
+```
+
+</v-after>
+
+- todo
+<!-- Live OpenSCAD demo based on editor contents? -->
+
+---
+
+# Printing Workflow - cont.
 
 ## Slicing the file
 
+- todo
+
 <!-- Cura 5 -->
 
+---
+
+# Printing Workflow - cont.
+
 ## Printing!
+
+- todo
 
 <!-- Timelapse of print with explanations? v-click to start next segment? -->
 
@@ -221,19 +294,24 @@ function updateUser(id: number, update: User) {
 
 # Use Cases
 
-- /r/cookingwith3dprinters
+- [/r/CookingWith3dPrinters](https://reddit.com/r/cookingwith3dprinters)
 
 ---
 
 ## Examples
 
+<!-- existing prints for EEL -->
+
 ---
+
+<!-- start of advanced section -->
 
 # Common Problems & Solutions
 
 - printing multiple things at once (temperature)
 
 ---
-src: ./pages/multiple-entries.md
-hide: false
----
+
+# Filaments
+
+

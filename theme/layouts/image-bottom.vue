@@ -20,7 +20,7 @@ const props = defineProps({
     </div>
     <div>
       <img class="slidev-image" :src="props.image" />
-      <span class="attribution">{{ props.attribution }}</span>
+      <a class="attribution" :href="props.attribution">{{ props.attribution }}</a>
     </div>
   </div>
 </template>

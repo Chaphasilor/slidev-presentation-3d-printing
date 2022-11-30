@@ -7,6 +7,18 @@
     @apply mt-10;
   }
 
+  a {
+    @apply border-0 underline;
+  }
+
+  strong {
+    @apply font-bold;
+  }
+
+  blockquote {
+    @apply border-l-3;
+  }
+
   h1 {
     @apply text-4xl mb-4 -ml-[0.05em];
   }
@@ -34,6 +46,16 @@
   h6:not(.opacity-100) {
     @apply opacity-40;
   }
+
+  ul {
+    @apply relative;
+    li {
+      img.floating {
+        @apply absolute bottom-0;
+      }
+    }
+  }
+  
 }
 
 .slidev-layout.cover,
@@ -81,6 +103,6 @@
     @apply w-full h-full object-cover rounded-md;
   }
   .slidev-image + .attribution {
-    @apply absolute bottom-5 rounded-md text-right text-gray-800 bg-white/50 px-2 italic text-sm;
+    @apply absolute bottom-5 rounded-md text-right text-gray-600 bg-white/50 px-2 italic text-xs;
   }
 }

@@ -8,6 +8,9 @@ const props = defineProps({
   class: {
     default: "",
   },
+  attribution: {
+    default: "",
+  }
 })
 
 const isOpen = ref(false)
@@ -17,15 +20,21 @@ function setIsOpen(value) {
   console.log(`isOpen.value:`, isOpen)
 }
 
+window.addEventListener(`keydown`, (e) => {
+  if (e.key === `Escape`) {
+    setIsOpen(false)
+  }
+})
+
 </script>
 
 <template>
   <div
     v-if="isOpen"
     class="fixed h-full inset-0 z-50 flex items-center justify-center"
-  >
+    >
     <div
-      class="fixed h-full inset-0 bg-black opacity-50"
+    class="fixed h-full inset-0 bg-black opacity-50"
       @click="setIsOpen(false)"
     ></div>
     <div
@@ -40,5 +49,6 @@ function setIsOpen(value) {
     :class="props.class"
     :src="props.src"
     @click="setIsOpen(true)"
+    :title="props.attribution"
     >
 </template>

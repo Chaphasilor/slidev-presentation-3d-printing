@@ -1,6 +1,6 @@
 ---
 theme: ./theme
-background: https://source.unsplash.com/collection/94734566/1920x1080
+# background: https://source.unsplash.com/collection/94734566/1920x1080
 lineNumbers: false
 info: |
   ## Slidev Starter Template
@@ -10,31 +10,24 @@ info: |
 drawings:
   persist: false
 title: 3D-Printing @ EEL
+layout: cover
+background: /3D-Printing-at-EEL_2_edited.jpg
 ---
 
 # 3D-Printing @ EEL
 
-<!--
-picture with Ultimaker and Benchies?
--->
 ---
-
-# Overview
-
-<toc/>
-
-<style>
-* {
-    @apply text-xs;
-}
-</style>
-
+layout: background-video
+video: /Cool 3D Printing Timelapse Effect.mp4
+type: mp4
+attribution: https://www.youtube.com/watch?v=Is10iN43UjI
 ---
 
 # What is 3D Printing?
 
 - A type of *additive manufacturing*
   - Parts are created layer-by-layer
+
 - Can be more efficient and versatile than subtractive manufacturing (e.g. machining)
   - But usually at the cost of structural strength or accuracy
 - Due to the nature of the process, it is often less reliable than other manufacturing techniques
@@ -63,7 +56,7 @@ attribution: https://www.3dmakerengineering.com/blogs/3d-printing/how-3d-printin
 
 <sup>"Fused Filament Fabrication" or "Fused Deposition Modeling"</sup>
 
-<Popover-Image :class="`absolute top-16 h-56 right-2`" src="/xyz_ender-3-pro.png"/>
+<Popover-Image :class="`absolute top-12 h-64 right-6`" src="/prusa_MK3Splus.png"/>
 
 - Uses filament (= "plastic wire") as the material source
 - Melt the material, push it through a nozzle and let it cool off
@@ -84,7 +77,9 @@ attribution: https://www.3dmakerengineering.com/blogs/3d-printing/how-3d-printin
 
 - Pro:
   - Can use different materials for a single print
-  - 
+  - Only little post-processing necessary
+  - Can print a wide range of materials
+
 - Con:
   - Overhangs are limited / need support structures
   - Nozzle diameter causes tradeoff between speed and accuracy
@@ -130,11 +125,11 @@ attribution: https://www.3dmakerengineering.com/blogs/3d-printing/how-3d-printin
   <span class="w-full inline-block text-center"><tabler-3d-cube-sphere/> 3D Object</span>
 </li>
 <li v-click="2" class="w-full block">
-  <img class="mb-10 rounded-md" src="/cura_benchy.png" />
+  <Popover-Image :class="`mb-10 rounded-md`" src="/cura_benchy.png"/>
   <span class="w-full inline-block text-center"><tabler-slice/> Slicing Software</span>
 </li>
 <li v-click="3" class="w-full block overflow-hidden">
-  <img class="aspect-square" src="/Ultimaker-S5-desktop-3D-printer-hero.webp" />
+  <Popover-Image :class="`aspect-square`" src="/Ultimaker-S5-desktop-3D-printer-hero.webp"/>
   <span class="w-full inline-block text-center"><tabler-printer/> 3D Printer</span>
 </li>
 
@@ -150,12 +145,16 @@ attribution: https://www.3dmakerengineering.com/blogs/3d-printing/how-3d-printin
 
 <!-- Animation where the three sections slide in from the right and squish together -->
 ---
-clicks: 3
+clicks: 2
 ---
 
 # Getting 3D Objects
 
-<v-clicks>
+<div v-click="1">
+  <Popover-Image :class="`absolute right-24 top-20 h-64`" src="/www.printables.com_edited.jpeg"/>
+</div>
+
+<v-clicks at="1">
 
 - Use pre-existing ones
   - <https://printables.com>
@@ -164,32 +163,32 @@ clicks: 3
 
 </v-clicks>
 
-<!-- <showcase-3mf class="w-full h-96 opacity-0 transition-all duration-500" :class="{'opacity-100': $slidev.nav.clicks > 0}"/> -->
 <!-- TODO add delay for showing objects instead of clicks? -->
 <showcase-3mf-new
   v-if="$slidev.nav.clicks > 1"
   :model="`/3d models/Gear.3mf`"
   :color="`#ee8833`"
-  :position="[3, 4, 0]"
-  :rotation="[-Math.PI/8, Math.PI/8, Math.PI/4]"
-  :scale="0.15"
-  :width="800" 
-  :height="500"
-  class="absolute top-0 opacity-100 right-0 m-6 transition-all duration-0 ease-in-out"
+  :position="[-13, -4, 0]"
+  :rotation="[-Math.PI/6, Math.PI/6, Math.PI/4]"
+  :scale="0.3"
+  :width="400" 
+  :height="250"
+  class="absolute top-0 opacity-100 left-0 m-6 transition-all duration-0 ease-in-out"
 />
   <!-- :class="{'opacity-100': $slidev.nav.clicks > 1}" -->
   <!-- TODO add delay for showing objects instead of clicks? -->
 <showcase-3mf-new
-  v-if="$slidev.nav.clicks > 2"
+  v-if="$slidev.nav.clicks > 1"
   :model="`/3d models/cable-relief.3mf`"
   :color="`#ff5858`"
-  :position="[17, 7, 0]"
-  :rotation="[Math.PI/(-4.5), -Math.PI/32, Math.PI/2]"
-  :rotationSpeed="0.25"
-  :scale="0.05" 
-  :width="800" 
-  :height="500"
-  class="absolute top-0 opacity-100 right-0 m-6 transition-all duration-0 ease-in-out"
+  :brightness="0.5"
+  :position="[12, -10, 0]"
+  :rotation="[Math.PI/(-3.5), -Math.PI/32, Math.PI/2]"
+  :rotationSpeed="0.15"
+  :scale="0.1" 
+  :width="400" 
+  :height="250"
+  class="absolute top-0 opacity-100 left-0 m-6 transition-all duration-0 ease-in-out"
 />
   <!-- :class="{'opacity-100': $slidev.nav.clicks > 2}" -->
 
@@ -198,6 +197,7 @@ clicks: 3
 # Computer-Aided Design (CAD)
 
 - Tools for constructing 3D objects
+
 - Either done visually or programmatically
 - Works by specifying geometric shapes with certain sizes and positions
   - Shapes are combined into a single object
@@ -226,6 +226,8 @@ clicks: 3
 
 # Example 1: OpenSCAD
 
+<Popover-Image :class="`absolute right-8 top-20 h-56`" src="/openscad-screenshot.png" :attribution="`https://forums.autodesk.com/t5/fusion-360-ideastation-archived/openscad-compatible-scripting-mode/idi-p/6015290`"/>
+
 - Programmatic CAD Tool
 - Free & Open Source
 - Possibilities are nearly endless, as long as you can program it
@@ -241,6 +243,10 @@ clicks: 3
 - Objects become (very) slow to render with increasing complexity
 
 <!-- <arrow x1="400" y1="420" x2="230" y2="330" color="#564" width="3" arrowSize="1" /> -->
+
+<Popover-Image :class="`absolute right-72 bottom-20 h-32`" src="/openscad-parametric.png"/>
+<Popover-Image :class="`absolute right-10 bottom-20 h-32`" src="/openscad-parametric-customizer.png"/>
+
 
 <span class="absolute bottom-3 right-4">[OpenSCAD Website](https://openscad.org/) | [BOSL2 Utility Library](https://github.com/revarbat/BOSL2)</span>
 
@@ -260,6 +266,8 @@ clicks: 3
 
 # Example 2: Fusion 360
 
+<Popover-Image :class="`absolute right-8 top-20 h-56`" src="/fusion360_ui-overview.png" :attribution="`https://help.autodesk.com/view/fusion360/ENU/?guid=GUID-E647CA56-7187-406A-ACE4-EAC59914FAE4`" />
+
 - Graphical CAD Tool
 - Paid and Cloud-Based
 - Very powerful, very easy to use
@@ -271,6 +279,8 @@ clicks: 3
 - Additional CAD features (rendering, animating, manufacturing, simulating)
 - Multiple parameter sets only possible through an add-on
   - Saved to a separate file and inconvenient to switch
+
+<Popover-Image :class="`absolute right-8 bottom-16 h-32`" src="/Parametric_APFEL_Cover_Fusion.png" />
   
 <span class="absolute bottom-3 right-4">Shoutout to Marco! :D</span>
 
@@ -278,9 +288,37 @@ clicks: 3
 
 # Slicing Software (Slicers)
 
-- Ultimaker Cura
-- PrusaSlicer
-- Chitubox
+<ul class="mt-20 flex -mx-10 flex-row justify-around items-end">
+
+<li v-click="1" class="w-full block">
+  <Popover-Image :class="`mx-auto mb-3 h-42`" src="/cura_benchy.png" />
+  <span class="w-full inline-block text-center">Ultimaker Cura</span>
+  <ul class="text-xs text-gray-700 dark:text-gray-300 mt-6 ml-6">
+    <li>Easy to use</li>
+    <li>Powerful, but convoluted</li>
+    <li>Open Source</li>
+  </ul>
+</li>
+<li v-click="2" class="w-full block">
+  <Popover-Image :class="`mx-auto mb-3 h-42`" src="/prusaslicer.jpg" :attribution="`https://3dlabprint.com/`" />
+  <span class="w-full inline-block text-center">PrusaSlicer</span>
+  <ul class="text-xs text-gray-700 dark:text-gray-300 mt-6 ml-6">
+    <li>Very straight-forward</li>
+    <li>Powerful, better algorithms than Cura</li>
+    <li>Open Source</li>
+  </ul>
+</li>
+<li v-click="3" class="w-full block">
+  <Popover-Image :class="`mx-auto mb-3 h-42`" src="/chitubox.jpg" :attribution="`https://ngroku.com/?p=4770`" />
+  <span class="w-full inline-block text-center">Chitubox</span>
+  <ul class="text-xs text-gray-700 dark:text-gray-300 mt-6 ml-6">
+    <li>SLA-Slicer</li>
+    <li>Not as many features (not necessary)</li>
+    <li>Commercial</li>
+  </ul>
+</li>
+
+</ul>
 
 ---
 
@@ -289,15 +327,15 @@ clicks: 3
 <ul class="mt-12 flex -mx-10 flex-row justify-around items-end">
 
 <li v-click="1" class="w-full block">
-  <img class="mx-auto mb-3 h-52" src="/prusa_MK3Splus.png" />
+  <Popover-Image :class="`mx-auto mb-3 h-52`" src="/prusa_MK3Splus.png" />
   <span class="w-full inline-block text-center">Prusa MK3(S+)</span>
   <ul class="text-xs text-gray-700 dark:text-gray-300 mt-6 ml-6">
-    <li>Easy to set up, Easy to use</li>
+    <li>Easy to set up, easy to use</li>
     <li>Tried & Tested</li>
   </ul>
 </li>
 <li v-click="2" class="w-full block">
-  <img class="mx-auto mb-4 h-42" src="/xyz_ender-3-pro.png" />
+  <Popover-Image :class="`mx-auto mb-4 h-42`" src="/xyz_ender-3-pro.png" />
   <span class="w-full inline-block text-center">Creality Ender 3</span>
   <ul class="text-xs text-gray-700 dark:text-gray-300 mt-6 ml-6">
     <li>Cheap</li>
@@ -305,7 +343,7 @@ clicks: 3
   </ul>
 </li>
 <li v-click="3" class="w-full block">
-  <img class="mx-auto mb-4 h-52" src="/Ultimaker-S5-desktop-3D-printer-hero.webp" />
+  <Popover-Image :class="`mx-auto mb-4 h-52`" src="/Ultimaker-S5-desktop-3D-printer-hero.webp" />
   <span class="w-full inline-block text-center">Ultimaker S5</span>
   <ul class="text-xs text-gray-700 dark:text-gray-300 mt-6 ml-6">
     <li>Made for low maintenance</li>
@@ -317,64 +355,51 @@ clicks: 3
   <span class="w-full inline-block text-center">Voron 2.4</span>
   <ul class="text-xs text-gray-700 dark:text-gray-300 mt-6 ml-6">
     <li>Open Source</li>
-    <li>Modable & Very Performant</li>
+    <li>Moddable & very performant</li>
   </ul>
 </li>
 
 </ul>
 
 ---
+clicks: 4
+---
 
 # Printing Workflow
+
+<v-clicks>
 
 1. Prepare the 3D Object
 2. Slice the object
 3. Print it!
 
----
+</v-clicks>
 
-# Printing Workflow - cont.
+<div v-after="4" class="grid content-center w-full text-center z-10 h-64 text-6xl font-semibold">
+   <confetti>
+      <h2>Demo time! 🥳</h2>
+   </confetti>
+</div>
 
-## Preparing the 3D Object
-
-```js {all|4|3-4|2-4|all}
-// a basic cube
-transform([0, 0, 3])
-  rotate([90, 0, 0])
-   cube([5, 5, 5]);
-```
-
-<v-after>
-
-```openscad {monaco}
-// a basic cube
-transform([0, 0, 3])
-  rotate([90, 0, 0])
-   cube([5, 5, 5]);
-```
-
-</v-after>
-
-- todo
-<!-- Live OpenSCAD demo based on editor contents? -->
+<!-- 
+- create simple model with OpenSCAD
+- export as STL
+- load into Cura and slice
+- save file to USB drive
+-->
 
 ---
 
-# Printing Workflow - cont.
+# Printing!
 
-## Slicing the file
-
-- todo
-
-<!-- Cura 5 -->
-
----
-
-# Printing Workflow - cont.
-
-## Printing!
-
-- todo
+- Ideally: insert USB drive, select file, start the print
+- Make sure the printer is ready before beginning!
+  - Is the build plate empty?
+    - Use spatula (below printer) to remove any residue
+  - Is there enough filament installed?
+    - You can ask someone to change it for you, or try it yourself!
+- Careful: printer has a heated bed!
+  - Can reach up to 130°C, depending on material / print settings
 
 <!-- Timelapse of print with explanations? v-click to start next segment? -->
 
@@ -382,6 +407,10 @@ transform([0, 0, 3])
 
 # Use Cases
 
+- Replace broken parts
+- Create custom cases or front shields
+- Test drafts before ordering parts
+- Print trinkets and decorations
 - [/r/CookingWith3dPrinters](https://reddit.com/r/cookingwith3dprinters)
 
 ---
@@ -396,6 +425,124 @@ transform([0, 0, 3])
 - Spool Holder w/ lip
 - AOI Connector Shield
 - Designs from others? Ask them for files/pictures
+- TODO use images instead of 3d objects if available
+
+<showcase-3mf-new
+  :model="`/3d models/cable-relief.3mf`"
+  :color="`#ff5858`"
+  :brightness="0.5"
+  :position="[-25, -10, 0]"
+  :rotation="[Math.PI/(-3.5), -Math.PI/32, Math.PI/2]"
+  :rotationSpeed="0.25"
+  :scale="0.1" 
+  :width="600" 
+  :height="250"
+  class="absolute top-0 opacity-100 left-0 m-6 transition-all duration-0 ease-in-out"
+/>
+
+<showcase-3mf-new
+  :model="`/3d models/cable-relief.3mf`"
+  :color="`#ff5858`"
+  :brightness="0.5"
+  :position="[-10, -10, 0]"
+  :rotation="[Math.PI/(-3.5), -Math.PI/32, Math.PI/2]"
+  :rotationSpeed="0.25"
+  :scale="0.1" 
+  :width="600" 
+  :height="250"
+  class="absolute top-0 opacity-100 left-0 m-6 transition-all duration-0 ease-in-out"
+/>
+
+<showcase-3mf-new
+  :model="`/3d models/cable-relief.3mf`"
+  :color="`#ff5858`"
+  :brightness="0.5"
+  :position="[5, -10, 0]"
+  :rotation="[Math.PI/(-3.5), -Math.PI/32, Math.PI/2]"
+  :rotationSpeed="0.25"
+  :scale="0.1" 
+  :width="600" 
+  :height="250"
+  class="absolute top-0 opacity-100 left-0 m-6 transition-all duration-0 ease-in-out"
+/>
+
+<showcase-3mf-new
+  :model="`/3d models/cable-relief.3mf`"
+  :color="`#ff5858`"
+  :brightness="0.5"
+  :position="[-25, -2, 0]"
+  :rotation="[Math.PI/(-3.5), -Math.PI/32, Math.PI/2]"
+  :rotationSpeed="0.25"
+  :scale="0.1" 
+  :width="600" 
+  :height="250"
+  class="absolute top-0 opacity-100 left-0 m-6 transition-all duration-0 ease-in-out"
+/>
+
+<showcase-3mf-new
+  :model="`/3d models/cable-relief.3mf`"
+  :color="`#ff5858`"
+  :brightness="0.5"
+  :position="[-25, 6, 0]"
+  :rotation="[Math.PI/(-3.5), -Math.PI/32, Math.PI/2]"
+  :rotationSpeed="0.25"
+  :scale="0.1" 
+  :width="600" 
+  :height="250"
+  class="absolute top-0 opacity-100 left-0 m-6 transition-all duration-0 ease-in-out"
+/>
+
+<showcase-3mf-new
+  :model="`/3d models/cable-relief.3mf`"
+  :color="`#ff5858`"
+  :brightness="0.5"
+  :position="[-10, -2, 0]"
+  :rotation="[Math.PI/(-3.5), -Math.PI/32, Math.PI/2]"
+  :rotationSpeed="0.25"
+  :scale="0.1" 
+  :width="600" 
+  :height="250"
+  class="absolute top-0 opacity-100 left-0 m-6 transition-all duration-0 ease-in-out"
+/>
+
+<showcase-3mf-new
+  :model="`/3d models/cable-relief.3mf`"
+  :color="`#ff5858`"
+  :brightness="0.5"
+  :position="[-10, 6, 0]"
+  :rotation="[Math.PI/(-3.5), -Math.PI/32, Math.PI/2]"
+  :rotationSpeed="0.25"
+  :scale="0.1" 
+  :width="600" 
+  :height="250"
+  class="absolute top-0 opacity-100 left-0 m-6 transition-all duration-0 ease-in-out"
+/>
+
+<showcase-3mf-new
+  :model="`/3d models/cable-relief.3mf`"
+  :color="`#ff5858`"
+  :brightness="0.5"
+  :position="[5, -2, 0]"
+  :rotation="[Math.PI/(-3.5), -Math.PI/32, Math.PI/2]"
+  :rotationSpeed="0.25"
+  :scale="0.1" 
+  :width="600" 
+  :height="250"
+  class="absolute top-0 opacity-100 left-0 m-6 transition-all duration-0 ease-in-out"
+/>
+
+<showcase-3mf-new
+  :model="`/3d models/cable-relief.3mf`"
+  :color="`#ff5858`"
+  :brightness="0.5"
+  :position="[5, 6, 0]"
+  :rotation="[Math.PI/(-3.5), -Math.PI/32, Math.PI/2]"
+  :rotationSpeed="0.25"
+  :scale="0.1" 
+  :width="600" 
+  :height="250"
+  class="absolute top-0 opacity-100 left-0 m-6 transition-all duration-0 ease-in-out"
+/>
 
 <!-- existing prints for EEL -->
 
@@ -403,10 +550,35 @@ transform([0, 0, 3])
 
 <!-- start of advanced section -->
 
-# Common Problems & Solutions
+# Common Problems
 
-- explain temperature gradients, warping
-- printing multiple things at once (temperature)
+<v-clicks>
+
+- 3D printing mainly constrained by thermodynamics
+  - Governs print speed, print quality
+  - Introduces some peculiar effects
+- Warping
+  - Filament contracts while cooling down
+  - Can deform the print or cause it to fail
+  - To counter: heated bed + enclosure
+- Printing multiple objects at once
+  - For each additional object, the "layer time" increases
+  - Material has more time to cool in-between layers
+  <tabler-arrow-right /> Possibly different print results
+- If a print fails <tabler-arrow-right /> Spaghetti 🍝
+
+</v-clicks>
+
+<div v-click="4">
+  <Popover-Image :class="`absolute bottom-16 right-8 h-56`" src="/spaghetti.jfif" :attribution="`https://help.prusa3d.com/article/5lvyc9jhka-spagheti-monster`" />
+</div>
+
+---
+
+# Basic Troubleshooting
+
+- TODO add more content
+- https://support.3dverkstan.se/article/23-a-visual-ultimaker-troubleshooting-guide
 
 ---
 

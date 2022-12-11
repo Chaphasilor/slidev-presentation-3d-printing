@@ -34,14 +34,14 @@ window.addEventListener(`keydown`, (e) => {
     class="fixed h-full inset-0 z-50 flex items-center justify-center"
     >
     <div
-    class="fixed h-full inset-0 bg-black opacity-50"
+    class="fixed h-full inset-0 bg-black opacity-60"
       @click="setIsOpen(false)"
     ></div>
     <div
       class="relative z-50 bg-white rounded-md overflow-hidden"
       @click.stop
     >
-      <img class="h-[50vh]" :src="props.src" />
+      <img class="block h-[60vh]" :src="props.src" />
     </div>
   </div>
   <img

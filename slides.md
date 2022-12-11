@@ -104,12 +104,16 @@ attribution: https://www.3dmakerengineering.com/blogs/3d-printing/how-3d-printin
   - This means that only the height of the object influences the print time!
 
 ---
+class: click-transition scale
+---
 
 # What do we need?
 
 <ul class="mt-12 flex -mx-10 flex-row justify-around items-end">
 
-<li v-click="1" class="w-full block">
+<v-clicks>
+
+<li class="w-full block">
   <!-- <img class="" src="https://source.unsplash.com/collection/94734566/800x800" /> -->
   <showcase-3mf-new 
     class=""
@@ -124,14 +128,16 @@ attribution: https://www.3dmakerengineering.com/blogs/3d-printing/how-3d-printin
   />
   <span class="w-full inline-block text-center"><tabler-3d-cube-sphere/> 3D Object</span>
 </li>
-<li v-click="2" class="w-full block">
+<li class="w-full block">
   <Popover-Image :class="`mb-10 rounded-md`" src="/cura_benchy.png"/>
   <span class="w-full inline-block text-center"><tabler-slice/> Slicing Software</span>
 </li>
-<li v-click="3" class="w-full block overflow-hidden">
+<li class="w-full block overflow-hidden">
   <Popover-Image :class="`aspect-square`" src="/Ultimaker-S5-desktop-3D-printer-hero.webp"/>
   <span class="w-full inline-block text-center"><tabler-printer/> 3D Printer</span>
 </li>
+
+</v-clicks>
 
 </ul>
 
@@ -184,7 +190,7 @@ clicks: 2
   :brightness="0.5"
   :position="[12, -10, 0]"
   :rotation="[Math.PI/(-3.5), -Math.PI/32, Math.PI/2]"
-  :rotationSpeed="0.15"
+  :rotationSpeed="-0.15"
   :scale="0.1" 
   :width="400" 
   :height="250"
@@ -285,32 +291,45 @@ clicks: 2
 <span class="absolute bottom-3 right-4">Shoutout to Marco! :D</span>
 
 ---
+class: click-transition slide-left
+---
 
 # Slicing Software (Slicers)
 
 <ul class="mt-20 flex -mx-10 flex-row justify-around items-end">
 
-<li v-click="1" class="w-full block">
+<v-clicks>
+
+<li class="w-full block">
   <Popover-Image :class="`mx-auto mb-3 h-42`" src="/cura_benchy.png" />
-  <span class="w-full inline-block text-center">Ultimaker Cura</span>
+  <div class="flex flex-col gap-0">
+    <span class="w-full inline-block text-center">Ultimaker Cura</span>
+    <a class="w-full inline-block text-center italic text-xs tracking-relaxed opacity-60" href="https://ultimaker.com/software/ultimaker-cura">https://ultimaker.com/software/ultimaker-cura</a>
+  </div>
   <ul class="text-xs text-gray-700 dark:text-gray-300 mt-6 ml-6">
     <li>Easy to use</li>
     <li>Powerful, but convoluted</li>
     <li>Open Source</li>
   </ul>
 </li>
-<li v-click="2" class="w-full block">
+<li class="w-full block">
   <Popover-Image :class="`mx-auto mb-3 h-42`" src="/prusaslicer.jpg" :attribution="`https://3dlabprint.com/`" />
-  <span class="w-full inline-block text-center">PrusaSlicer</span>
+  <div class="flex flex-col gap-0">
+    <span class="w-full inline-block text-center">PrusaSlicer</span>
+    <a class="w-full inline-block text-center italic text-xs tracking-relaxed opacity-60" href="https://www.prusa3d.com/page/prusaslicer_424/">https://www.prusa3d.com/page/prusaslicer_424/</a>
+  </div>
   <ul class="text-xs text-gray-700 dark:text-gray-300 mt-6 ml-6">
     <li>Very straight-forward</li>
     <li>Powerful, better algorithms than Cura</li>
     <li>Open Source</li>
   </ul>
 </li>
-<li v-click="3" class="w-full block">
+<li class="w-full block">
   <Popover-Image :class="`mx-auto mb-3 h-42`" src="/chitubox.jpg" :attribution="`https://ngroku.com/?p=4770`" />
-  <span class="w-full inline-block text-center">Chitubox</span>
+  <div class="flex flex-col gap-0">
+    <span class="w-full inline-block text-center">Chitubox</span>
+    <a class="w-full inline-block text-center italic text-xs tracking-relaxed opacity-60" href="https://www.chitubox.com/en/index">https://www.chitubox.com/</a>
+  </div>
   <ul class="text-xs text-gray-700 dark:text-gray-300 mt-6 ml-6">
     <li>SLA-Slicer</li>
     <li>Not as many features (not necessary)</li>
@@ -318,15 +337,21 @@ clicks: 2
   </ul>
 </li>
 
+</v-clicks>
+
 </ul>
 
+---
+class: click-transition slide-left
 ---
 
 # Popular Printers <sup>(FFF only)</sup>
 
 <ul class="mt-12 flex -mx-10 flex-row justify-around items-end">
 
-<li v-click="1" class="w-full block">
+<v-clicks>
+
+<li class="w-full block">
   <Popover-Image :class="`mx-auto mb-3 h-52`" src="/prusa_MK3Splus.png" />
   <span class="w-full inline-block text-center">Prusa MK3(S+)</span>
   <ul class="text-xs text-gray-700 dark:text-gray-300 mt-6 ml-6">
@@ -334,7 +359,7 @@ clicks: 2
     <li>Tried & Tested</li>
   </ul>
 </li>
-<li v-click="2" class="w-full block">
+<li class="w-full block">
   <Popover-Image :class="`mx-auto mb-4 h-42`" src="/xyz_ender-3-pro.png" />
   <span class="w-full inline-block text-center">Creality Ender 3</span>
   <ul class="text-xs text-gray-700 dark:text-gray-300 mt-6 ml-6">
@@ -342,7 +367,7 @@ clicks: 2
     <li>Prints well after some tweaks</li>
   </ul>
 </li>
-<li v-click="3" class="w-full block">
+<li class="w-full block">
   <Popover-Image :class="`mx-auto mb-4 h-52`" src="/Ultimaker-S5-desktop-3D-printer-hero.webp" />
   <span class="w-full inline-block text-center">Ultimaker S5</span>
   <ul class="text-xs text-gray-700 dark:text-gray-300 mt-6 ml-6">
@@ -350,7 +375,7 @@ clicks: 2
     <li>Dual Extruder</li>
   </ul>
 </li>
-<li v-click="4" class="w-full block">
+<li class="w-full block">
   <img class="mx-auto mb-5 h-40" src="/voron-V2.4_RED1_front_clear.png" />
   <span class="w-full inline-block text-center">Voron 2.4</span>
   <ul class="text-xs text-gray-700 dark:text-gray-300 mt-6 ml-6">
@@ -358,6 +383,8 @@ clicks: 2
     <li>Moddable & very performant</li>
   </ul>
 </li>
+
+</v-clicks>
 
 </ul>
 
@@ -389,8 +416,12 @@ clicks: 4
 -->
 
 ---
+class: click-transition slide-right
+---
 
 # Printing!
+
+<v-clicks>
 
 - Ideally: insert USB drive, select file, start the print
 - Make sure the printer is ready before beginning!
@@ -398,14 +429,20 @@ clicks: 4
     - Use spatula (below printer) to remove any residue
   - Is there enough filament installed?
     - You can ask someone to change it for you, or try it yourself!
-- Careful: printer has a heated bed!
+- <tabler-alert-triangle /> Careful: printer has a heated bed!
   - Can reach up to 130°C, depending on material / print settings
+
+</v-clicks>
 
 <!-- Timelapse of print with explanations? v-click to start next segment? -->
 
 ---
+class: click-transition slide-right
+---
 
 # Use Cases
+
+<v-clicks>
 
 - Replace broken parts
 - Create custom cases or front shields
@@ -413,21 +450,44 @@ clicks: 4
 - Print trinkets and decorations
 - [/r/CookingWith3dPrinters](https://reddit.com/r/cookingwith3dprinters)
 
+</v-clicks>
+
+<!-- TODO stack images for each bullet point -->
+
 ---
 
-## Examples
+## Deployed Prints @ EEL
 
-- Emergency Shutdown Addon
-- Cable relief
-- Backplane holders ("old" and new)
-- PSU Knob
-- Poland 8CH MB1 Case
-- Spool Holder w/ lip
-- AOI Connector Shield
-- Designs from others? Ask them for files/pictures
-- TODO use images instead of 3d objects if available
+<div class="w-full h-7/8 mt-4 grid grid-rows-3 grid-cols-4 gap-8">
 
-<showcase-3mf-new
+  <Popover-Image :class="`h-32 mx-auto`" src="/Emergency_Shutdown_Bumper.jpg" :attribution="`Fabi for Karsten`"/>
+
+  <Popover-Image :class="`h-32 mx-auto`" src="/Rack_1.jpg" :attribution="`Henning for Sven`"/>
+
+  <div class="flex flex-row justify-around">
+    <Popover-Image :class="`h-32`" src="/Rack_and_Cable_Relief.jpg" :attribution="``"/>
+    <Popover-Image :class="`h-32`" src="/Rack_and_Cable_Relief_2.jpg" :attribution="`Zoomed`"/>
+  </div>
+
+  <Popover-Image :class="`h-32 mx-auto`" src="/Rack_no_Cable_Relief.jpg" :attribution="``"/>
+
+  <Popover-Image :class="`h-32 mx-auto`" src="/Case_2.jpg" :attribution="`Fabi for Sven`"/>
+
+  <Popover-Image :class="`h-32 mx-auto`" src="/Case_3.jpg" :attribution="`Fabi for Sven`"/>
+
+  <Popover-Image :class="`h-32 mx-auto`" src="/Plugboard_Stand.jpg" :attribution="`Fabi for Peter W.`"/>
+
+  <Popover-Image :class="`h-32 mx-auto`" src="/Backplane_Holder.jpg" :attribution="`Fabi for Manuel`"/>
+
+  <Popover-Image :class="`h-32 mx-auto`" src="/PSU_Replacement_Knob.jpg" :attribution="`Fabi`"/>
+
+  <Popover-Image :class="`h-32 mx-auto`" src="/Temp_Sensor_Holder.jpg" :attribution="``"/>
+
+  <Popover-Image :class="`h-32 mx-auto`" src="/Apfel_Piggy_Cover_1.jpg" :attribution="``"/>
+
+  <Popover-Image :class="`h-32 mx-auto`" src="/Apfel_Piggy_Cover_2.jpg" :attribution="``"/>
+
+<!-- <showcase-3mf-new
   :model="`/3d models/cable-relief.3mf`"
   :color="`#ff5858`"
   :brightness="0.5"
@@ -542,13 +602,38 @@ clicks: 4
   :width="600" 
   :height="250"
   class="absolute top-0 opacity-100 left-0 m-6 transition-all duration-0 ease-in-out"
-/>
+/> -->
 
-<!-- existing prints for EEL -->
+</div>
+
+<!--
+existing prints for EEL
+
+- Emergency Shutdown Addon
+- Cable relief
+- Backplane holders ("old" and new)
+- PSU Knob
+- Poland 8CH MB1 Case
+- Spool Holder w/ lip
+- AOI Connector Shield
+
+-->
 
 ---
 
 <!-- start of advanced section -->
+
+# Basic Parameters
+
+- Layer Height
+- Wall/Top/Bottom Thickness
+- Infill Density
+- Build Plate Adhesion (Brim/Skirt)
+- Support
+
+---
+class: click-transition slide-right
+---
 
 # Common Problems
 
@@ -557,6 +642,8 @@ clicks: 4
 - 3D printing mainly constrained by thermodynamics
   - Governs print speed, print quality
   - Introduces some peculiar effects
+- Overhangs
+  - Solution: support structures (slicer setting)
 - Warping
   - Filament contracts while cooling down
   - Can deform the print or cause it to fail
@@ -569,20 +656,89 @@ clicks: 4
 
 </v-clicks>
 
-<div v-click="4">
-  <Popover-Image :class="`absolute bottom-16 right-8 h-56`" src="/spaghetti.jfif" :attribution="`https://help.prusa3d.com/article/5lvyc9jhka-spagheti-monster`" />
+<div v-after>
+  <Popover-Image :class="`absolute bottom-16 right-0 h-56`" src="/spaghetti.jfif" :attribution="`https://help.prusa3d.com/article/5lvyc9jhka-spagheti-monster`" />
 </div>
 
 ---
 
-# Basic Troubleshooting
+# Additional Useful Parameters
 
+<v-clicks>
+
+- Support Structure (Tree Support)
+- Infill Pattern
+- Printing Temperature
+- Material Flow
+- Print Speed
+- Retraction
+- Print Cooling
+- Prime Tower
+- Initial Layer Line Width
+- Z-Seam Alignment
+
+</v-clicks>
+
+---
+
+# Advanced Troubleshooting
+
+- 
 - TODO add more content
 - https://support.3dverkstan.se/article/23-a-visual-ultimaker-troubleshooting-guide
 
 ---
+class: click-transition slide-left
+---
 
 # Filaments
 
-- 
+<ul class="flex flex-col gap-4 items-center flex-wrap w-full h-7/8 overflow-hidden">
 
+<v-clicks>
+
+<vertical-list-item src="/tough-pla-drill-jig.webp" attribution="https://ultimaker.com/materials/tough-pla">(Tough) PLA</vertical-list-item>
+<vertical-list-item src="/abs-battery-side.webp" attribution="https://ultimaker.com/materials/abs">ABS</vertical-list-item>
+<vertical-list-item src="/nylon-gear.webp" attribution="https://ultimaker.com/materials/nylon">Nylon</vertical-list-item>
+<vertical-list-item src="/tpu95a-flex-tool.webp" attribution="https://ultimaker.com/materials/tpu-95a">TPU (95A) / TPC / TPE</vertical-list-item>
+<vertical-list-item src="/CPE-research-lab-custom-funnel.webp" attribution="https://ultimaker.com/materials/cpe">CPE</vertical-list-item>
+<vertical-list-item src="/pp-custom-clamp-2.webp" attribution="https://ultimaker.com/materials/pp">PP</vertical-list-item>
+<vertical-list-item src="/pc-outdoor-lamp-with-infra-red-sensor.webp" attribution="https://ultimaker.com/materials/pc">PC</vertical-list-item>
+<vertical-list-item badge="Support" src="/pva-skeeler-skate-prototype-water-soluble-support.webp" attribution="https://ultimaker.com/materials/pva">PVA</vertical-list-item>
+<vertical-list-item badge="Support" src="/breakaway-tool.webp" attribution="https://ultimaker.com/materials/breakaway">Breakaway</vertical-list-item>
+<vertical-list-item src="/3D-Filaments.png" attribution="https://all3dp.com/buy-3d-printing-filament/">...and many more</vertical-list-item>
+
+</v-clicks>
+
+</ul>
+
+<!-- 
+- Tough PLA:
+  - easy to print
+  - durable enough for most applications
+- ABS:
+  - very durable
+  - needs a high and static temperature
+- Nylon:
+  - very high physical durability
+  - wear resistant
+- TPU:
+  - flexible
+  - can be challenging to print
+  - also somewhat chemically resistant
+- CPE:
+  - chemical resistance
+- PP:
+  - high fatigue resistance (living hinges)
+  - low friction coefficient
+- PC:
+  - high temperature resistance (110°C)
+  - high strength
+- PVA:
+  - water-soluble
+  - support material
+- Breakaway:
+  - brittle
+  - doesn't bond well with other materials
+  - support material
+ -->

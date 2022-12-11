@@ -58,6 +58,41 @@
   
 }
 
+/* v-click transition */
+.click-transition {
+
+  &.slide-left {
+    .slidev-vclick-target {
+      @apply transform transition-all duration-400 ease;
+    }
+    
+    .slidev-vclick-hidden {
+      @apply translate-x-8 opacity-20;
+    }
+  }
+  
+  &.slide-right {
+    .slidev-vclick-target {
+      @apply transform transition-all duration-400 ease;
+    }
+    
+    .slidev-vclick-hidden {
+      @apply -translate-x-8 opacity-20;
+    }
+  }
+
+  &.scale {
+    .slidev-vclick-target {
+      @apply transform transition-all duration-400 ease;
+    }
+    
+    .slidev-vclick-hidden {
+      @apply scale-80 opacity-20;
+    }
+  }
+
+}
+
 .slidev-layout.cover {
   @apply relative h-full grid;
 

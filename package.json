@@ -12,7 +12,7 @@
     "@slidev/theme-seriph": "*",
     "bezier-easing": "^2.1.0",
     "three": "^0.134.0",
-    "troisjs": "^0.3.4"
+    "troisjs": "github:Chaphasilor/trois#pre-built"
   },
   "devDependencies": {
     "@iconify-json/tabler": "^1.1.42"

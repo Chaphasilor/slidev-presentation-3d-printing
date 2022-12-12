@@ -77,9 +77,9 @@ clicks: 5
 
 - Uses filament (= "plastic wire") as the material source
 - Melt the material, push it through a nozzle and let it cool off
-  - The nozzle moves along the shape of the print while the filament is being extruded
+  - The nozzle moves along the shape of the layer while the filament is being extruded
   - Next layer can be placed on top as soon as the previous layer has solidified enough
-- Come in two different variations:
+- Come in two different flavors:
 
 </v-clicks>
 

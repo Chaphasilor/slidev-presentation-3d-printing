@@ -27,7 +27,8 @@ const props = defineProps({
     <div
       class="w-full h-full flex flex-col justify-center"
     >
-      <slot></slot>
+      <span><slot></slot></span>
+      <span class="inline-block text-[10px] flex flex-row flex-wrap items-center gap-1.5"><slot name="extra"></slot></span>
     </div>
     <div
       v-if="props.badge !== ``"

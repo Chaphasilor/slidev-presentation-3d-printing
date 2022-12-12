@@ -56,7 +56,7 @@ attribution: https://www.3dmakerengineering.com/blogs/3d-printing/how-3d-printin
 
 <sup>"Fused Filament Fabrication" or "Fused Deposition Modeling"</sup>
 
-<Popover-Image :class="`absolute top-12 h-64 right-6`" src="/prusa_MK3Splus.png"/>
+<div class="">
 
 - Uses filament (= "plastic wire") as the material source
 - Melt the material, push it through a nozzle and let it cool off
@@ -69,7 +69,11 @@ attribution: https://www.3dmakerengineering.com/blogs/3d-printing/how-3d-printin
   - `Delta` printers use three arms that can be extended or shortened with regard to the build platform
     - Very simple operating principle that still covers the X, Y and Z axis
     - Works by using parallel rods on each arm to prevent the nozzle from rotating or tilting
-    <Popover-Image :class="`floating h-50 -left-20`" src="/delta-printer_trilab.jpg"/>
+
+</div>
+
+<Popover-Image :class="`absolute top-12 h-64 right-6`" src="/prusa_MK3Splus.png"/>
+<Popover-Image :class="`floating h-50 -left-20`" src="/delta-printer_trilab.jpg"/>
 
 ---
 
@@ -115,7 +119,7 @@ class: click-transition scale
 
 <li class="w-full block">
   <!-- <img class="" src="https://source.unsplash.com/collection/94734566/800x800" /> -->
-  <showcase-3mf-new 
+  <showcase-3mf-new
     class=""
     :model="`/3d models/3DBenchy.3mf`"
     :color="`#ee8833`"
@@ -123,7 +127,7 @@ class: click-transition scale
     :position="[0, -7, 0]"
     :rotation="[-Math.PI/2 + Math.PI/8, 0, 0]"
     :scale="0.3"
-    :width="128" 
+    :width="128"
     :height="128"
   />
   <span class="w-full inline-block text-center"><tabler-3d-cube-sphere/> 3D Object</span>
@@ -389,38 +393,12 @@ class: click-transition slide-left
 </ul>
 
 ---
-clicks: 4
----
-
-# Printing Workflow
-
-<v-clicks>
-
-1. Prepare the 3D Object
-2. Slice the object
-3. Print it!
-
-</v-clicks>
-
-<div v-after="4" class="grid content-center w-full text-center z-10 h-64 text-6xl font-semibold">
-   <confetti>
-      <h2>Demo time! 🥳</h2>
-   </confetti>
-</div>
-
-<!-- 
-- create simple model with OpenSCAD
-- export as STL
-- load into Cura and slice
-- save file to USB drive
--->
-
----
-class: click-transition slide-right
+clicks: 15
 ---
 
 # Printing!
 
+<div class="click-transition slide-right">
 <v-clicks>
 
 - Ideally: insert USB drive, select file, start the print
@@ -434,7 +412,48 @@ class: click-transition slide-right
 
 </v-clicks>
 
-<!-- Timelapse of print with explanations? v-click to start next segment? -->
+</div>
+
+<div class="absolute bottom-2 left-0 w-full flex flex-row justify-around">
+
+<div v-click="4"><EmbeddedVideo :at="4" class="h-40 rounded-md" src="/start_print.mp4" /></div>
+<div v-click="8"><EmbeddedVideo :at="8" class="h-40 rounded-md" src="/timelapse_print.mp4" /></div>
+<div v-click="12"><EmbeddedVideo :at="12" class="h-40 rounded-md" src="/finish_print.mp4" /></div>
+
+</div>
+
+<!-- TODO Timelapse video of print with explanations? v-click to start next segment? -->
+
+---
+clicks: 4
+---
+
+# Printing Workflow
+
+<div class="click-transition slide-right">
+<v-clicks>
+
+1. Prepare the 3D Object
+2. Slice the object
+3. Print it!
+
+</v-clicks>
+
+</div>
+
+<div v-after="4" class="grid content-center w-full text-center z-10 h-64 text-6xl font-semibold">
+   <confetti>
+      <h2>Demo time! 🥳</h2>
+   </confetti>
+</div>
+
+<!-- 
+- create simple model with ~~OpenSCAD~~ Fusion
+- export as STL
+- load into Cura and slice
+- save file to USB drive
+- start print
+-->
 
 ---
 class: click-transition slide-right
@@ -442,15 +461,40 @@ class: click-transition slide-right
 
 # Use Cases
 
+
+
+<ul>
+
 <v-clicks>
 
-- Replace broken parts
-- Create custom cases or front shields
-- Test drafts before ordering parts
-- Print trinkets and decorations
-- [/r/CookingWith3dPrinters](https://reddit.com/r/cookingwith3dprinters)
+<li>
+  Replace broken parts
+  <Popover-Image :class="`absolute top-[0rem] right-[0rem] h-52`" src="/replacement_fountain_head.jpg" :attribution="`/u/DieingFetus - https://www.reddit.com/r/functionalprint/comments/z3p7lx/replacement_fountain_head_60_70g_of_old_abs_150/`" />
+</li>
+
+<li>
+  Create custom cases or front shields
+  <Popover-Image :class="`absolute top-[1rem] right-[2rem] h-52`" src="/Case_2.jpg" />
+</li>
+
+<li>
+  Test drafts before ordering machined parts
+  <Popover-Image :class="`absolute top-[2rem] right-[4rem] h-60`" src="drafts.jpg" :attribution="`https://xyples.com/replacement-part/`" />
+</li>
+
+<li>
+  Print trinkets and decorations
+  <Popover-Image :class="`absolute top-[3rem] right-[6rem] h-64 w-92`" src="/stitch_trinket.jpg" :attribution="`MBD_3D - https://www.thingiverse.com/thing:5637214`" />
+</li>
+
+<li>
+  <a href="https://reddit.com/r/cookingwith3dprinters">/r/CookingWith3dPrinters</a>
+  <Popover-Image :class="`absolute top-[4rem] right-[8.5rem] h-68`" src="/cooking.jpg" :attribution="`/u/YeetDisDue - https://www.reddit.com/r/cookingwith3dprinters/comments/oi1chf/breakfast/`" />
+</li>
 
 </v-clicks>
+
+</ul>
 
 <!-- TODO stack images for each bullet point -->
 
@@ -499,110 +543,7 @@ class: click-transition slide-right
   :height="250"
   class="absolute top-0 opacity-100 left-0 m-6 transition-all duration-0 ease-in-out"
 />
-
-<showcase-3mf-new
-  :model="`/3d models/cable-relief.3mf`"
-  :color="`#ff5858`"
-  :brightness="0.5"
-  :position="[-10, -10, 0]"
-  :rotation="[Math.PI/(-3.5), -Math.PI/32, Math.PI/2]"
-  :rotationSpeed="0.25"
-  :scale="0.1" 
-  :width="600" 
-  :height="250"
-  class="absolute top-0 opacity-100 left-0 m-6 transition-all duration-0 ease-in-out"
-/>
-
-<showcase-3mf-new
-  :model="`/3d models/cable-relief.3mf`"
-  :color="`#ff5858`"
-  :brightness="0.5"
-  :position="[5, -10, 0]"
-  :rotation="[Math.PI/(-3.5), -Math.PI/32, Math.PI/2]"
-  :rotationSpeed="0.25"
-  :scale="0.1" 
-  :width="600" 
-  :height="250"
-  class="absolute top-0 opacity-100 left-0 m-6 transition-all duration-0 ease-in-out"
-/>
-
-<showcase-3mf-new
-  :model="`/3d models/cable-relief.3mf`"
-  :color="`#ff5858`"
-  :brightness="0.5"
-  :position="[-25, -2, 0]"
-  :rotation="[Math.PI/(-3.5), -Math.PI/32, Math.PI/2]"
-  :rotationSpeed="0.25"
-  :scale="0.1" 
-  :width="600" 
-  :height="250"
-  class="absolute top-0 opacity-100 left-0 m-6 transition-all duration-0 ease-in-out"
-/>
-
-<showcase-3mf-new
-  :model="`/3d models/cable-relief.3mf`"
-  :color="`#ff5858`"
-  :brightness="0.5"
-  :position="[-25, 6, 0]"
-  :rotation="[Math.PI/(-3.5), -Math.PI/32, Math.PI/2]"
-  :rotationSpeed="0.25"
-  :scale="0.1" 
-  :width="600" 
-  :height="250"
-  class="absolute top-0 opacity-100 left-0 m-6 transition-all duration-0 ease-in-out"
-/>
-
-<showcase-3mf-new
-  :model="`/3d models/cable-relief.3mf`"
-  :color="`#ff5858`"
-  :brightness="0.5"
-  :position="[-10, -2, 0]"
-  :rotation="[Math.PI/(-3.5), -Math.PI/32, Math.PI/2]"
-  :rotationSpeed="0.25"
-  :scale="0.1" 
-  :width="600" 
-  :height="250"
-  class="absolute top-0 opacity-100 left-0 m-6 transition-all duration-0 ease-in-out"
-/>
-
-<showcase-3mf-new
-  :model="`/3d models/cable-relief.3mf`"
-  :color="`#ff5858`"
-  :brightness="0.5"
-  :position="[-10, 6, 0]"
-  :rotation="[Math.PI/(-3.5), -Math.PI/32, Math.PI/2]"
-  :rotationSpeed="0.25"
-  :scale="0.1" 
-  :width="600" 
-  :height="250"
-  class="absolute top-0 opacity-100 left-0 m-6 transition-all duration-0 ease-in-out"
-/>
-
-<showcase-3mf-new
-  :model="`/3d models/cable-relief.3mf`"
-  :color="`#ff5858`"
-  :brightness="0.5"
-  :position="[5, -2, 0]"
-  :rotation="[Math.PI/(-3.5), -Math.PI/32, Math.PI/2]"
-  :rotationSpeed="0.25"
-  :scale="0.1" 
-  :width="600" 
-  :height="250"
-  class="absolute top-0 opacity-100 left-0 m-6 transition-all duration-0 ease-in-out"
-/>
-
-<showcase-3mf-new
-  :model="`/3d models/cable-relief.3mf`"
-  :color="`#ff5858`"
-  :brightness="0.5"
-  :position="[5, 6, 0]"
-  :rotation="[Math.PI/(-3.5), -Math.PI/32, Math.PI/2]"
-  :rotationSpeed="0.25"
-  :scale="0.1" 
-  :width="600" 
-  :height="250"
-  class="absolute top-0 opacity-100 left-0 m-6 transition-all duration-0 ease-in-out"
-/> -->
+-->
 
 </div>
 
@@ -620,30 +561,56 @@ existing prints for EEL
 -->
 
 ---
-
+layout: split
+class: click-transition slide-right
+---
 <!-- start of advanced section -->
 
 # Basic Parameters
 
-- Layer Height
-- Wall/Top/Bottom Thickness
-- Infill Density
-- Build Plate Adhesion (Brim/Skirt)
-- Support
+::left::
 
----
-class: click-transition slide-right
+<v-clicks>
+
+- Layer Height
+  - Controls surface quality, strength and print time
+  - "Resolution" of the print
+- Wall/Top/Bottom Thickness
+  - Increases strength of hollow prints
+- Infill Density
+  - Controls how much material is put inside of "hollow" prints
+  - Truly hollow prints can simply be squished together
+  - Different infill patterns for different applications
+
+</v-clicks>
+
+::right::
+
+<v-clicks>
+
+- Build Plate Adhesion (Brim/Skirt)
+  - Primes the nozzle (making sure filament starts to extrude right away)
+  - Brims and Rafts can help tall prints stick to the build plate
+    - If a print comes loose while printing <tabler-arrow-right /> failed print
+- Support
+  - You can't print in mid-air
+  - Support structures add extra material to brace ("support") layers above
+
+</v-clicks>
+
 ---
 
 # Common Problems
+
+<div class="click-transition slide-right">
 
 <v-clicks>
 
 - 3D printing mainly constrained by thermodynamics
   - Governs print speed, print quality
   - Introduces some peculiar effects
-- Overhangs
-  - Solution: support structures (slicer setting)
+- Overhangs & Bridging
+  - Solution: cooling & support structures (slicer setting)
 - Warping
   - Filament contracts while cooling down
   - Can deform the print or cause it to fail
@@ -656,36 +623,11 @@ class: click-transition slide-right
 
 </v-clicks>
 
+</div>
+
 <div v-after>
   <Popover-Image :class="`absolute bottom-16 right-0 h-56`" src="/spaghetti.jfif" :attribution="`https://help.prusa3d.com/article/5lvyc9jhka-spagheti-monster`" />
 </div>
-
----
-
-# Additional Useful Parameters
-
-<v-clicks>
-
-- Support Structure (Tree Support)
-- Infill Pattern
-- Printing Temperature
-- Material Flow
-- Print Speed
-- Retraction
-- Print Cooling
-- Prime Tower
-- Initial Layer Line Width
-- Z-Seam Alignment
-
-</v-clicks>
-
----
-
-# Advanced Troubleshooting
-
-- 
-- TODO add more content
-- https://support.3dverkstan.se/article/23-a-visual-ultimaker-troubleshooting-guide
 
 ---
 class: click-transition slide-left
@@ -697,15 +639,42 @@ class: click-transition slide-left
 
 <v-clicks>
 
-<vertical-list-item src="/tough-pla-drill-jig.webp" attribution="https://ultimaker.com/materials/tough-pla">(Tough) PLA</vertical-list-item>
-<vertical-list-item src="/abs-battery-side.webp" attribution="https://ultimaker.com/materials/abs">ABS</vertical-list-item>
-<vertical-list-item src="/nylon-gear.webp" attribution="https://ultimaker.com/materials/nylon">Nylon</vertical-list-item>
-<vertical-list-item src="/tpu95a-flex-tool.webp" attribution="https://ultimaker.com/materials/tpu-95a">TPU (95A) / TPC / TPE</vertical-list-item>
-<vertical-list-item src="/CPE-research-lab-custom-funnel.webp" attribution="https://ultimaker.com/materials/cpe">CPE</vertical-list-item>
-<vertical-list-item src="/pp-custom-clamp-2.webp" attribution="https://ultimaker.com/materials/pp">PP</vertical-list-item>
-<vertical-list-item src="/pc-outdoor-lamp-with-infra-red-sensor.webp" attribution="https://ultimaker.com/materials/pc">PC</vertical-list-item>
-<vertical-list-item badge="Support" src="/pva-skeeler-skate-prototype-water-soluble-support.webp" attribution="https://ultimaker.com/materials/pva">PVA</vertical-list-item>
-<vertical-list-item badge="Support" src="/breakaway-tool.webp" attribution="https://ultimaker.com/materials/breakaway">Breakaway</vertical-list-item>
+<vertical-list-item src="/tough-pla-drill-jig.webp" attribution="https://ultimaker.com/materials/tough-pla">
+  <template #default>(Tough) PLA</template>
+  <template #extra>easy to print <tabler-circle class="text-[6px]"/> versatile</template>
+</vertical-list-item>
+<vertical-list-item src="/abs-battery-side.webp" attribution="https://ultimaker.com/materials/abs">
+  <template #default>ABS</template>
+  <template #extra>durable <tabler-circle class="text-[6px]"/> needs an even temperature</template>
+</vertical-list-item>
+<vertical-list-item src="/nylon-gear.webp" attribution="https://ultimaker.com/materials/nylon">
+  <template #default>Nylon</template>
+  <template #extra>high toughness <tabler-circle class="text-[6px]"/> resistant to wear</template>
+</vertical-list-item>
+<vertical-list-item src="/tpu95a-flex-tool.webp" attribution="https://ultimaker.com/materials/tpu-95a">
+  <template #default>TPU (95A) / TPC / TPE</template>
+  <template #extra>flexible <tabler-circle class="text-[6px]"/> chemically resistant <tabler-circle class="text-[6px]"/> hard to print</template>
+</vertical-list-item>
+<vertical-list-item src="/CPE-research-lab-custom-funnel.webp" attribution="https://ultimaker.com/materials/cpe">
+  <template #default>CPE</template>
+  <template #extra>high chemical resistance</template>
+</vertical-list-item>
+<vertical-list-item src="/pp-custom-clamp-2.webp" attribution="https://ultimaker.com/materials/pp">
+  <template #default>PP</template>
+  <template #extra>high fatigue resistance <tabler-circle class="text-[6px]"/> low friction coefficient</template>
+</vertical-list-item>
+<vertical-list-item src="/pc-outdoor-lamp-with-infra-red-sensor.webp" attribution="https://ultimaker.com/materials/pc">
+  <template #default>PC</template>
+  <template #extra>good thermal resistance <tabler-circle class="text-[6px]"/> high strength</template>
+</vertical-list-item>
+<vertical-list-item badge="Support" src="/pva-skeeler-skate-prototype-water-soluble-support.webp" attribution="https://ultimaker.com/materials/pva">
+  <template #default>PVA</template>
+  <template #extra>water-soluble <tabler-circle class="text-[6px]"/> messy to print</template>
+</vertical-list-item>
+<vertical-list-item badge="Support" src="/breakaway-tool.webp" attribution="https://ultimaker.com/materials/breakaway">
+  <template #default>Breakaway</template>
+  <template #extra>brittle <tabler-circle class="text-[6px]"/> doesn't bond well with other materials</template>
+</vertical-list-item>
 <vertical-list-item src="/3D-Filaments.png" attribution="https://all3dp.com/buy-3d-printing-filament/">...and many more</vertical-list-item>
 
 </v-clicks>
@@ -742,3 +711,111 @@ class: click-transition slide-left
   - doesn't bond well with other materials
   - support material
  -->
+
+---
+class: click-transition slide-right
+---
+
+# Advanced Troubleshooting
+
+<div class="relative">
+  <v-clicks>
+  <div class="absolute flex flex-col gap-4" v-click-hide="2">
+    <span>Failed prints not always this easy to diagnose as this:</span>
+    <Popover-Image :class="`h-72`" src="/Failed_Print_1.jpg" />
+  </div>
+
+  <div class="absolute flex flex-col gap-4" v-click-hide="3">
+    <span>(Axis came loose)</span>
+    <Popover-Image :class="`h-72`" src="/Failed_Print_2.jpg" />
+  </div>
+  </v-clicks>
+</div>
+
+<ul class="text-[14px]">
+
+<v-clicks at="3">
+
+<li>
+  Elephant's foot<br>
+  <tabler-arrow-right /> Initial Layer Line Width
+  <div v-click-hide="4"><Popover-Image :class="`absolute top-2 right-2 h-52`" src="/troubleshooting/elephants_foot.jpg" :attribution="`https://support.3dverkstan.se/article/23-a-visual-ultimaker-troubleshooting-guide`" /></div>
+</li>
+<li>
+  Ugly Overhangs<br>
+  <tabler-arrow-right /> Print Cooling, Tree Support and printing multiple objects at once
+  <div v-click-hide="5"><Popover-Image :class="`absolute top-2 right-2 h-52`" src="/troubleshooting/ugly_overhangs.jpg" :attribution="`https://support.3dverkstan.se/article/23-a-visual-ultimaker-troubleshooting-guide`" /></div>
+</li>
+<li>
+  Dual Extrusion Problems<br>
+  <tabler-arrow-right /> Prime/Wipe Tower and Retraction
+</li>
+<li>
+  Underextrusion<br>
+  <tabler-arrow-right /> Material Flow and Printing Temperature
+  <div v-click="7">
+    Also: check filament feeders for grinding!
+    <div v-click-hide="8"><Popover-Image :class="`absolute top-2 right-2 h-52`" src="/troubleshooting/grinding.jpg" :attribution="`https://support.3dverkstan.se/article/23-a-visual-ultimaker-troubleshooting-guide`" /></div>
+    <div v-click-hide="8"><Popover-Image :class="`absolute bottom-2 right-2 h-52`" src="/troubleshooting/grinding_feeder.jpg" :attribution="`https://forum.fablab-luebeck.de/t/erfahrungsbericht-under-extrusion-filament-grinding/3415`" /></div>
+  </div>
+</li>
+</v-clicks>
+
+<v-clicks at="8">
+<li>
+  Print Speed
+</li>
+<li>
+  Z-Seam Alignment
+</li>
+<li>
+  Infill Pattern
+</li>
+
+</v-clicks>
+
+</ul>
+
+<!-- 
+
+- Support:
+  - Always try to use as little support as possible
+  - Cura Plugin: Auto Orientation
+  - Use Tree Support wherever possible to reduce print time, used material and post-processing
+- Infill Pattern
+  - Cuboid works pretty well
+  - Made for good liquid/gas flow, so not the strongest/stiffest
+  - Triangles or Hexagons better suited for high strength
+- Printing Temperature
+  - Small Adjustments (~5°C) can improve the quality of the print under certain conditions
+  - E.g. when printing multiple objects at once, bridging or dealing with overhangs
+- Material Flow
+  - 
+
+ -->
+
+---
+class: click-transition slide-right
+---
+
+# Conclusion
+
+<v-clicks>
+
+- 3D Printing isn't hard!
+- It just gets harder the more you deviate from "normal" prints
+- You can print a ton of things & there are many applications
+- Different printers for different tasks
+  - Fast, durable, rough: FFF/FDM
+  - High-precision, batches of small prints: SLA
+- 3D Printing can solve many problems you might have
+  - Especially good for *custom* solutions
+  - Just ask me if you need help!
+
+</v-clicks>
+
+---
+layout: center
+---
+
+# Thanks for your attention!

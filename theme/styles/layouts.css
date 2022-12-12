@@ -61,6 +61,10 @@
 /* v-click transition */
 .click-transition {
 
+  & .popover-image {
+    @apply !transform-none;
+  }
+  
   &.slide-left {
     .slidev-vclick-target {
       @apply transform transition-all duration-400 ease;

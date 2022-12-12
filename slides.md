@@ -49,14 +49,19 @@ Here is another comment.
 layout: image-bottom
 image: /3d-print_workflow.webp
 attribution: https://www.3dmakerengineering.com/blogs/3d-printing/how-3d-printing-works
+class: click-transition slide-right
 ---
 
 # How does it work?
+
+<v-clicks>
 
 - Take a 3D object
 - Split ("slice") the part into many layers of equal thickness
 - "Build" the print layer by layer
   - Details on the next slide!
+
+</v-clicks>
 
 ---
 clicks: 5

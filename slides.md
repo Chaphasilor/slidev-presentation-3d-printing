@@ -25,6 +25,10 @@ attribution: https://www.youtube.com/watch?v=Is10iN43UjI
 
 # What is 3D Printing?
 
+<div class="mt-16 text-xl">
+
+<v-clicks>
+
 - A type of *additive manufacturing*
   - Parts are created layer-by-layer
 
@@ -32,6 +36,10 @@ attribution: https://www.youtube.com/watch?v=Is10iN43UjI
   - But usually at the cost of structural strength or accuracy
 - Due to the nature of the process, it is often less reliable than other manufacturing techniques
   - There are a number of reasons why prints could fail, we will talk about them later
+
+</v-clicks>
+
+</div>
 
 <!--
 Here is another comment.
@@ -46,49 +54,81 @@ attribution: https://www.3dmakerengineering.com/blogs/3d-printing/how-3d-printin
 # How does it work?
 
 - Take a 3D object
-- Split the part into many layers of equal thickness
+- Split ("slice") the part into many layers of equal thickness
 - "Build" the print layer by layer
   - Details on the next slide!
 
+---
+clicks: 5
 ---
 
 # How does it work? - FFF/FDM Printing
 
 <sup>"Fused Filament Fabrication" or "Fused Deposition Modeling"</sup>
 
-<div class="">
+<div class="click-transition slide-right">
+
+<v-clicks>
 
 - Uses filament (= "plastic wire") as the material source
 - Melt the material, push it through a nozzle and let it cool off
   - The nozzle moves along the shape of the print while the filament is being extruded
   - Next layer can be placed on top as soon as the previous layer has solidified enough
-- Come in two different variations
-  - `XYZ` printers use three axis for correctly positioning the nozzle
-    - Forward/backward, left/right and up/down
-    - During regular printing, the nozzle never moves back down, because everything below it is already done
-  - `Delta` printers use three arms that can be extended or shortened with regard to the build platform
-    - Very simple operating principle that still covers the X, Y and Z axis
-    - Works by using parallel rods on each arm to prevent the nozzle from rotating or tilting
+- Come in two different variations:
+
+</v-clicks>
+
+<ol class="ml-12">
+
+<v-clicks>
+
+- `XYZ` printers use three axis for correctly positioning the nozzle
+  - Forward/backward, left/right and up/down
+  - During regular printing, the nozzle never moves back down, because everything below it is already done
+- `Delta` printers use three arms that can be extended or shortened with regard to the build platform
+  - Very simple operating principle that still covers the X, Y and Z axis
+  - Works by using parallel rods on each arm to prevent the nozzle from rotating or tilting
+
+</v-clicks>
+
+</ol>
 
 </div>
 
-<Popover-Image :class="`absolute top-12 h-64 right-6`" src="/prusa_MK3Splus.png"/>
-<Popover-Image :class="`floating h-50 -left-20`" src="/delta-printer_trilab.jpg"/>
+<div v-click="4"><Popover-Image :class="`absolute top-12 h-64 right-6`" src="/prusa_MK3Splus.png"/></div>
+<div v-click="5"><Popover-Image :class="`absolute bottom-11 h-50 left-1`" src="/delta-printer_trilab.jpg"/></div>
 
+---
+layout: split
+class: click-transition slide-right
 ---
 
 ## FFF - Advantages & Limitations
 
-- Pro:
+::left::
+
+- **Pro**
+  <v-clicks>
+
   - Can use different materials for a single print
   - Only little post-processing necessary
   - Can print a wide range of materials
 
-- Con:
+  </v-clicks>
+
+::right::
+
+- **Con**
+  <v-clicks>
+
   - Overhangs are limited / need support structures
   - Nozzle diameter causes tradeoff between speed and accuracy
   - Each layer is extruded sequentially
 
+  </v-clicks>
+
+---
+class: click-transition slide-right
 ---
 
 # How does it work? - SLA and Powder-Based Printing
@@ -97,15 +137,19 @@ attribution: https://www.3dmakerengineering.com/blogs/3d-printing/how-3d-printin
 
 <Popover-Image :class="`absolute bottom-16 h-64 right-0`" src="/sla.png"/>
 
+<v-clicks>
+
 - Uses liquid resin as the material source
 - Prints the part upside-down
   - *Build plate* is lowered into a tank filled with resin
   - Screen with UV backlight at the bottom of the tank
   - Cures the resin between the screen and build plate / finished layers
 - Resin is cured (hardened) into solid plastic layer by layer
-- Very high accuracy / printing resolution
+- Very high accuracy / printing resolution (50μm)
 - A whole layer is cured at once
   - This means that only the height of the object influences the print time!
+
+</v-clicks>
 
 ---
 class: click-transition scale
@@ -176,11 +220,24 @@ clicks: 2
 <!-- TODO add delay for showing objects instead of clicks? -->
 <showcase-3mf-new
   v-if="$slidev.nav.clicks > 1"
-  :model="`/3d models/Gear.3mf`"
+  :model="`/3d models/febex3-bp-holder.3mf`"
   :color="`#ee8833`"
-  :position="[-13, -4, 0]"
+  :brightness="0.4"
+  :position="[-17, 4, 0]"
+  :rotation="[-Math.PI/4, Math.PI/8, Math.PI/4]"
+  :rotationSpeed="0.4"
+  :scale="0.035"
+  :width="800"
+  :height="500"
+  class="absolute top-0 opacity-100 left-0 m-6 transition-all duration-0 ease-in-out"
+/>
+<showcase-3mf-new
+  v-if="$slidev.nav.clicks > 1"
+  :model="`/3d models/Gear.3mf`"
+  :color="`#338833`"
+  :position="[0, -6, 0]"
   :rotation="[-Math.PI/6, Math.PI/6, Math.PI/4]"
-  :scale="0.3"
+  :scale="0.2"
   :width="400" 
   :height="250"
   class="absolute top-0 opacity-100 left-0 m-6 transition-all duration-0 ease-in-out"
@@ -192,7 +249,7 @@ clicks: 2
   :model="`/3d models/cable-relief.3mf`"
   :color="`#ff5858`"
   :brightness="0.5"
-  :position="[12, -10, 0]"
+  :position="[10, -7, 0]"
   :rotation="[Math.PI/(-3.5), -Math.PI/32, Math.PI/2]"
   :rotationSpeed="-0.15"
   :scale="0.1" 
@@ -203,8 +260,12 @@ clicks: 2
   <!-- :class="{'opacity-100': $slidev.nav.clicks > 2}" -->
 
 ---
+class: click-transition slide-right
+---
 
 # Computer-Aided Design (CAD)
+
+<v-clicks>
 
 - Tools for constructing 3D objects
 
@@ -213,11 +274,17 @@ clicks: 2
   - Shapes are combined into a single object
   - Modifications (rounding, cuts, etc.) can be added at the end
 - Finished object is rendered and exported
-- Alternative: 3D scanning existing objects 
+- Alternative: 3D scanning existing objects
 
+</v-clicks>
+
+---
+class: click-transition slide-right
 ---
 
 # Parametric Design
+
+<v-clicks>
 
 - Define solutions (= objects) as explicitly as possible
 - Be able to improve our solution by improving the problem statement
@@ -226,7 +293,10 @@ clicks: 2
   - "Variables"
 - Example:
   - Make sure the wall thickness of an object is consistent by using a parameter instead of typing out the thickness value each time
+  - Create an object that has the same properties as another one, but with different dimensions/measurements
 - Prevents modeling errors and saves time
+
+</v-clicks>
 
 <!-- 
 - As scientists and engineers, we want to define problems and solutions as explicitly as possible
@@ -422,7 +492,7 @@ clicks: 15
 
 </div>
 
-<!-- TODO Timelapse video of print with explanations? v-click to start next segment? -->
+<!-- Timelapse video of print with explanations? v-click to start next segment? -->
 
 ---
 clicks: 4
@@ -496,8 +566,6 @@ class: click-transition slide-right
 
 </ul>
 
-<!-- TODO stack images for each bullet point -->
-
 ---
 
 ## Deployed Prints @ EEL
@@ -568,6 +636,8 @@ class: click-transition slide-right
 
 # Basic Parameters
 
+<sup class="block mt-6 -mb-10">FFF/FDA only</sup>
+
 ::left::
 
 <v-clicks>
@@ -602,6 +672,8 @@ class: click-transition slide-right
 
 # Common Problems
 
+<sup class="block mt-6 -mb-3">FFF/FDA only</sup>
+
 <div class="click-transition slide-right">
 
 <v-clicks>
@@ -626,7 +698,7 @@ class: click-transition slide-right
 </div>
 
 <div v-after>
-  <Popover-Image :class="`absolute bottom-16 right-0 h-56`" src="/spaghetti.jfif" :attribution="`https://help.prusa3d.com/article/5lvyc9jhka-spagheti-monster`" />
+  <Popover-Image :class="`absolute bottom-16 right-8 h-56`" src="/spaghetti.jfif" :attribution="`https://help.prusa3d.com/article/5lvyc9jhka-spagheti-monster`" />
 </div>
 
 ---
@@ -713,7 +785,7 @@ class: click-transition slide-left
  -->
 
 ---
-class: click-transition slide-right
+clicks: 9
 ---
 
 # Advanced Troubleshooting
@@ -721,13 +793,13 @@ class: click-transition slide-right
 <div class="relative">
   <v-clicks>
   <div class="absolute flex flex-col gap-4" v-click-hide="2">
-    <span>Failed prints not always this easy to diagnose as this:</span>
+    <span>Failed prints not always as easy to diagnose as this:</span>
     <Popover-Image :class="`h-72`" src="/Failed_Print_1.jpg" />
   </div>
 
   <div class="absolute flex flex-col gap-4" v-click-hide="3">
     <span>(Axis came loose)</span>
-    <Popover-Image :class="`h-72`" src="/Failed_Print_2.jpg" />
+    <Popover-Image :class="`h-72`" src="/Failed_Print_2_inked.jpg" />
   </div>
   </v-clicks>
 </div>
@@ -756,20 +828,21 @@ class: click-transition slide-right
   <div v-click="7">
     Also: check filament feeders for grinding!
     <div v-click-hide="8"><Popover-Image :class="`absolute top-2 right-2 h-52`" src="/troubleshooting/grinding.jpg" :attribution="`https://support.3dverkstan.se/article/23-a-visual-ultimaker-troubleshooting-guide`" /></div>
-    <div v-click-hide="8"><Popover-Image :class="`absolute bottom-2 right-2 h-52`" src="/troubleshooting/grinding_feeder.jpg" :attribution="`https://forum.fablab-luebeck.de/t/erfahrungsbericht-under-extrusion-filament-grinding/3415`" /></div>
+    <div v-click-hide="8"><Popover-Image :class="`fixed bottom-4 right-8 h-52`" src="/troubleshooting/grinding_feeder.jpg" :attribution="`https://forum.fablab-luebeck.de/t/erfahrungsbericht-under-extrusion-filament-grinding/3415`" /></div>
   </div>
 </li>
 </v-clicks>
 
 <v-clicks at="8">
 <li>
-  Print Speed
+  Scratches<br>
+  <tabler-arrow-right /> Z-Hop or Combing Mode
+  <div v-click-hide="9"><Popover-Image :class="`absolute top-2 right-2 h-52`" src="/troubleshooting/scratches.jpg" :attribution="`https://support.3dverkstan.se/article/23-a-visual-ultimaker-troubleshooting-guide`" /></div>
 </li>
 <li>
-  Z-Seam Alignment
-</li>
-<li>
-  Infill Pattern
+  Ugly Seam<br>
+  <tabler-arrow-right /> Z-Seam Alignment
+  <div v-click-hide="10"><Popover-Image :class="`absolute top-2 right-2 h-72`" src="/troubleshooting/seam.jpeg" :attribution="`https://www.reddit.com/r/3Dprinting/comments/44kefh/does_s3d_let_you_decide_where_your_seam_goes_does/`" /></div>
 </li>
 
 </v-clicks>
@@ -803,13 +876,14 @@ class: click-transition slide-right
 <v-clicks>
 
 - 3D Printing isn't hard!
+
 - It just gets harder the more you deviate from "normal" prints
 - You can print a ton of things & there are many applications
 - Different printers for different tasks
-  - Fast, durable, rough: FFF/FDM
-  - High-precision, batches of small prints: SLA
+  - Fast, durable, rough: **FFF/FDM**
+  - High-precision & batches of small prints: **SLA**
 - 3D Printing can solve many problems you might have
-  - Especially good for *custom* solutions
+  - Especially good for ***custom*** solutions
   - Just ask me if you need help!
 
 </v-clicks>
@@ -819,3 +893,5 @@ layout: center
 ---
 
 # Thanks for your attention!
+
+<confetti />

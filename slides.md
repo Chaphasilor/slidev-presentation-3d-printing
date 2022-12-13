@@ -79,7 +79,7 @@ clicks: 5
 - Melt the material, push it through a nozzle and let it cool off
   - The nozzle moves along the shape of the layer while the filament is being extruded
   - Next layer can be placed on top as soon as the previous layer has solidified enough
-- Come in two different flavors:
+- Printers come in two different flavors:
 
 </v-clicks>
 

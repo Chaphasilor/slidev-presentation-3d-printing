@@ -38,10 +38,6 @@ attribution: https://www.youtube.com/watch?v=Is10iN43UjI
 
 </div>
 
-<!--
-Here is another comment.
--->
-
 ---
 layout: image-bottom
 image: /3d-print_workflow.webp

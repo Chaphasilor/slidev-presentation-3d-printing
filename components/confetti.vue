@@ -2,6 +2,9 @@
 import { onMounted, ref, watchEffect } from 'vue'
 
 const props = defineProps({
+  confettiId: {
+    required: true,
+  },
   at: {
     default: 0,
   },
@@ -9,32 +12,69 @@ const props = defineProps({
 
 let confettiBlown = false
 
+let confetti = [];
+const confettiCount = 300;
+const gravity = 0.5;
+const terminalVelocity = 5;
+const drag = 0.175;
+const colors = [
+{ front: 'red', back: 'darkred' },
+{ front: 'green', back: 'darkgreen' },
+{ front: 'blue', back: 'darkblue' },
+{ front: 'yellow', back: 'darkyellow' },
+{ front: 'orange', back: 'darkorange' },
+{ front: 'pink', back: 'darkpink' },
+{ front: 'purple', back: 'darkpurple' },
+{ front: 'turquoise', back: 'darkturquoise' }];
+
+let canvas;
+let ctx;
+let cx;
+let cy;
+
+let randomRange = (min, max) => Math.random() * (max - min) + min;
+
+let initConfetti = (confettiId) => {
+
+  console.log(`initConfetti`)
+  
+  for (let i = 0; i < confettiCount; i++) {
+    confetti.push({
+      color: colors[Math.floor(randomRange(0, colors.length))],
+      dimensions: {
+        x: randomRange(10, 20),
+        y: randomRange(10, 30) },
+
+      position: {
+        x: randomRange(0, canvas.width),
+        y: (canvas.height - 1) * 1 },
+
+      rotation: randomRange(0, 2 * Math.PI),
+      scale: {
+        x: 1,
+        y: 1 },
+
+      velocity: {
+        x: randomRange(-25, 25),
+        y: randomRange(0, -50) } });
+
+
+  }
+};
+
+window.initConfetti = initConfetti;
+
 onMounted(() => {
 
   console.log(`mounted`)
 
   //-----------Var Inits--------------
-  let canvas = document.getElementById("confetti-canvas");
-  let ctx = canvas.getContext("2d");
+  canvas = document.querySelector(`#confetti-canvas-${props.confettiId}`);
+  ctx = canvas.getContext("2d");
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-  let cx = ctx.canvas.width / 2;
-  let cy = ctx.canvas.height / 2;
-
-  let confetti = [];
-  const confettiCount = 300;
-  const gravity = 0.5;
-  const terminalVelocity = 5;
-  const drag = 0.175;
-  const colors = [
-  { front: 'red', back: 'darkred' },
-  { front: 'green', back: 'darkgreen' },
-  { front: 'blue', back: 'darkblue' },
-  { front: 'yellow', back: 'darkyellow' },
-  { front: 'orange', back: 'darkorange' },
-  { front: 'pink', back: 'darkpink' },
-  { front: 'purple', back: 'darkpurple' },
-  { front: 'turquoise', back: 'darkturquoise' }];
+  cx = ctx.canvas.width / 2;
+  cy = ctx.canvas.height / 2;
 
 
   //-----------Functions--------------
@@ -43,33 +83,6 @@ onMounted(() => {
     canvas.height = window.innerHeight;
     cx = ctx.canvas.width / 2;
     cy = ctx.canvas.height / 2;
-  };
-
-  let randomRange = (min, max) => Math.random() * (max - min) + min;
-
-  let initConfetti = () => {
-    for (let i = 0; i < confettiCount; i++) {
-      confetti.push({
-        color: colors[Math.floor(randomRange(0, colors.length))],
-        dimensions: {
-          x: randomRange(10, 20),
-          y: randomRange(10, 30) },
-
-        position: {
-          x: randomRange(0, canvas.width),
-          y: (canvas.height - 1) * 1 },
-
-        rotation: randomRange(0, 2 * Math.PI),
-        scale: {
-          x: 1,
-          y: 1 },
-
-        velocity: {
-          x: randomRange(-25, 25),
-          y: randomRange(0, -50) } });
-
-
-    }
   };
 
   //---------Render-----------
@@ -122,20 +135,20 @@ onMounted(() => {
     resizeCanvas();
   });
 
+  document.querySelector(`#confetti-trigger-${props.confettiId}`)?.addEventListener('click', function () {
+    initConfetti(props.confettiId);
+  });
+
   render();
 
-  document.querySelector(`#confetti-trigger`)?.addEventListener(`click`, function () {
-    initConfetti();
-  });
-  
 })
 
 </script>
 
 <template>
-  <div class="fixed top-0 left-0 w-full h-full !z-[-1]">
-    <canvas class="select-none" id="confetti-canvas"></canvas>
-    <div id="confetti-trigger" class="absolute top-0 left-0 grid content-center w-full h-full">
+  <div class="fixed top-0 left-0 w-full h-full !z-[1]">
+    <canvas :id="`confetti-canvas-${props.confettiId}`" class="select-none"></canvas>
+    <div @click="initConfetti(props.confettiId);" :id="`confetti-trigger-${confettiId}`" class="absolute top-0 left-0 grid content-center w-full h-full">
       <slot></slot>
     </div>
   </div>

@@ -101,7 +101,15 @@
   @apply relative h-full grid;
 
   h1 {
-    @apply absolute bottom-0 left-0 text-5xl font-semibold transform -rotate-90 -translate-y-56 -translate-x-36 leading-20;
+    @apply absolute bottom-0 left-0 text-5xl font-semibold transform -rotate-90 -translate-y-56 -translate-x-16 leading-20;
+  }
+}
+
+.slidev-layout.cover-video {
+  @apply relative h-full grid;
+
+  h1 {
+    @apply text-5xl font-semibold;
   }
 }
 

@@ -5,7 +5,7 @@
       :class="`object-cover mx-auto ${props.class}`"
       :poster="props.poster"
       :src="props.src"
-      controls muted
+      controls muted loop
       @dblclick="refs.video.fullscreen()"
     />
   </div>

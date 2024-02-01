@@ -7,14 +7,16 @@
     "export": "slidev export"
   },
   "dependencies": {
-    "@slidev/cli": "^0.36.8",
+    "@slidev/cli": "^0.46.3",
     "@slidev/theme-default": "*",
     "@slidev/theme-seriph": "*",
     "bezier-easing": "^2.1.0",
+    "tailwindcss": "^3.4.1",
     "three": "^0.134.0",
     "troisjs": "github:Chaphasilor/trois#pre-built"
   },
   "devDependencies": {
-    "@iconify-json/tabler": "^1.1.42"
+    "@iconify-json/tabler": "^1.1.42",
+    "playwright-chromium": "^1.28.1"
   }
 }
